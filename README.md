@@ -4,7 +4,6 @@
 
 [![JIT Benchmarks](https://github.com/jh10001/Programming-Language-Benchmarks-Visualization/actions/workflows/PyBenchmarks.yml/badge.svg)](https://github.com/GoodManWEN/Programming-Language-Benchmarks-Visualization/actions/workflows/PyBenchmarks.yml)
 [![Render Image](https://github.com/jh10001/Programming-Language-Benchmarks-Visualization/actions/workflows/RenderImage.yml/badge.svg)](https://github.com/GoodManWEN/Programming-Language-Benchmarks-Visualization/actions/workflows/RenderImage.yml)
-[![Visitors](https://visitor-badge.glitch.me/badge?page_id=goodmanwen.Programming-Language-Benchmarks-Visualization&style=flat-square&color=0088cc)](https://visitor-badge.glitch.me/badge?page_id=goodmanwen.Programming-Language-Benchmarks-Visualization&style=flat-square&color=0088cc)
 
 Benchmarks data & source codes come from 
 [the computer language benchmarks game](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html).

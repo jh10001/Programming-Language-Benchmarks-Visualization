@@ -87,7 +87,8 @@ def convert_into_pandas_dataframe(full_language_result_list: List[List[Dict]], t
     languages_in_summary = []
     array = []
     for programming_language_results in full_language_result_list:
-        results_dict = programming_language_results.set_index("test_name")[target_key].to_dict()
+        min_secs_idx = programming_language_results.groupby("test_name")["secs"].idxmin()
+        results_dict = programming_language_results.loc[min_secs_idx].set_index("test_name")[target_key].to_dict()
         line = [] 
         # there's assertion above make sure non-empty
         languages_in_summary.append(programming_language_results["language"].iloc[0])

@@ -2,9 +2,9 @@ Distributor ID:	Ubuntu
 Description:	Ubuntu 22.04.3 LTS
 Release:	22.04
 Codename:	jammy
-Linux fv-az1432-522 6.2.0-1018-azure #18~22.04.1-Ubuntu SMP Tue Nov 21 19:25:02 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+Linux fv-az802-791 6.2.0-1018-azure #18~22.04.1-Ubuntu SMP Tue Nov 21 19:25:02 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
 Python 3.11.1
-Python 3.10.13 (b29ea555846562061345eb58ca9bd717e1f0a9e3, Dec 24 2023, 21:54:59)
-[PyPy 7.3.14 with GCC 10.2.1 20210130 (Red Hat 10.2.1-11)]
+Python 3.10.13 (fc59e61cfbff, Jan 14 2024, 13:01:46)
+[PyPy 7.3.15 with GCC 10.2.1 20210130 (Red Hat 10.2.1-11)]
 Python 3.8.12 (remotes/origin/release_2.3.5:4b858b5062, Sep 25 2022, 18:56:33)
 [Pyston 2.3.5, GCC 9.4.0]

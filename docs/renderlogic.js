@@ -1,5 +1,5 @@
 const raw_data = JSON.parse('[["gcc", 1.0, 1.0], ["clang", 1.1, 2.0], ["icx", 1.1, 3.0], ["rust", 1.19, 4.0], ["gpp", 1.25, 5.0], ["csharpaot", 1.72, 6.0], ["csharpcore", 1.73, 7.0], ["ifx", 2.67, 8.0], ["chapel", 2.91, 9.0], ["ifc", 2.97, 11.0], ["graalvm", 2.97, 13.0], ["java", 2.99, 15.0], ["gnat", 3.41, 10.0], ["go", 3.51, 12.0], ["julia", 3.64, 18.0], ["ghc", 4.71, 14.0], ["fpascal", 5.02, 16.0], ["openj9", 5.04, 19.0], ["dartjit", 6.69, 22.0], ["sbcl", 6.95, 21.0], ["swift", 7.35, 20.0], ["ocaml", 7.38, 17.0], ["node", 7.59, 23.0], ["dartexe", 7.94, 26.0], ["gfortran", 7.99, 25.0], ["fsharpcore", 10.41, 28.0], ["racket", 12.11, 27.0], ["php", 12.37, 24.0], ["Pypy", 18.66, 33.0], ["ruby", 41.17, 32.0], ["Pyston", 45.75, 29.0], ["python3", 53.43, 31.0], ["perl", 72.74, 30.0], ["javaxint", 81.95, 35.0], ["vw", 86.45, 34.0], ["lua", 126.08, 38.0], ["pharo", 151.65, 37.0], ["erlang", 468.73, 39.0], ["mri", 507.63, 36.0], ["toit", 662.93, 40.0]]')
-const render_date = '2024-05-22'
+const render_date = '2024-05-29'
 const container = document.getElementById('main')
 container.style.width="1080px"
 container.style.height= raw_data.length * 48 + "px"

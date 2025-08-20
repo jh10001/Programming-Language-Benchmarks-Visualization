@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "programming-language-benchmarks-visualization"
+version = "0.1.0"
+description = "Visualization of programming language benchmarks data from The Computer Language Benchmarks Game"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "jh10001"},
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+requires-python = ">=3.8.1"
+dependencies = [
+    "pandas>=1.2.1",
+    "requests>=2.25.1",
+    "beautifulsoup4>=4.9.3",
+    "Pillow>=8.1.0",
+    "selenium>=3.141.0",
+    "lxml",
+]
+
+[project.urls]
+Homepage = "https://github.com/jh10001/Programming-Language-Benchmarks-Visualization"
+Repository = "https://github.com/jh10001/Programming-Language-Benchmarks-Visualization"
+Issues = "https://github.com/jh10001/Programming-Language-Benchmarks-Visualization/issues"
+
+[project.scripts]
+update-and-render = "update_and_render:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.uv]
+dev-dependencies = [
+    "flake8>=6.0.0",
+]

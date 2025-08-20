@@ -11,7 +11,6 @@ import requests
 from PIL import Image
 from PIL.PngImagePlugin import PngImageFile
 from bs4 import BeautifulSoup
-from pipeit import *
 from typing import List, Set, Dict
 from io import BytesIO
 from selenium import webdriver
@@ -35,6 +34,7 @@ def get_test_results_from_website():
             'mem(KB)': 'mem',
             'size(B)': 'gz',
             'elapsed(s)': 'secs',
+            'elapsed-time(s)': 'secs',  # Handle both old and new column names
         })
         full_language_result_list = []
         for _, grouped_df in df.groupby('language'):
@@ -42,36 +42,7 @@ def get_test_results_from_website():
 
     return full_language_result_list
 
-def get_local_extended_results():
 
-    with open('./python-extension/result/result.json','r',encoding='utf-8') as f:
-        raw = json.loads(f.read())
-
-    # Wash the data into the specified format
-    full_language_result_list = []
-    for key, value in raw.items():
-        # for each interpreter
-        if value['executor_name'] == 'python':
-            label = "python-control"
-        else:
-            label = value['executor_name']
-        label = f"{label[0].upper()}{label[1:]}"
-        
-        this_language_result_list = []
-        for test_name, test_results in value["items"].items():
-            # for each test
-            trimed = test_results[-10:]
-            output_result_dict = {"test_name": test_name.replace('-', ''), "language": label}
-            output_result_dict["secs"] = sum(trimed | Map(lambda x: round(x["time"],2))) / len(trimed)
-            output_result_dict["mem"] = int(sum(trimed | Map(lambda x: x["mem"] )) / len(trimed) / 1024 + 0.5)
-            output_result_dict["gz"] = 0
-            output_result_dict["busy"] = 0
-            output_result_dict["cpu load"] = 0
-            this_language_result_list.append(output_result_dict)
-        else:
-            full_language_result_list.append(pd.DataFrame.from_records(this_language_result_list))
-
-    return full_language_result_list
 
 def convert_into_pandas_dataframe(full_language_result_list: List[List[Dict]], target_key: str) -> pd.DataFrame:
     # The repeated execution here creates logical redundancy, but given that we don't 
@@ -102,10 +73,6 @@ def compute_language_ordered_value(
     frame: pd.DataFrame,
     weight_mode: int = 1
 ) -> pd.Series :
-    # Proportional calibration of execution times for different machines
-    frame.loc["Pypy"] = (frame.loc["Pypy"] * frame.loc["python3"] / frame.loc["Python-control"]).round(decimals=2)
-    frame.loc["Pyston"] = (frame.loc["Pyston"] * frame.loc["python3"] / frame.loc["Python-control"]).round(decimals=2)
-    frame.drop("Python-control", inplace = True)
     # A simple algorithm to adjust the weights so that extreme values are less influential
     min_line = frame.min()
     wdight_function_map = {
@@ -138,7 +105,7 @@ def add_weighted_index(result_secs: pd.Series, result_mem: pd.Series) -> pd.Data
     return view
 
 def render_json_output(view: pd.DataFrame) -> str:
-    output = zip(view.index.tolist(), view.values.tolist()) | Map(lambda x: (x[0], *x[1])) | list
+    output = [(x[0], *x[1]) for x in zip(view.index.tolist(), view.values.tolist())]
     return json.dumps(output)
 
 def render(source_name, dest_name, **kwargs):
@@ -209,9 +176,11 @@ def webkit_render_images():
     print("Rendered")
     sys.exit(0)
 
-if __name__ == '__main__':
+def main():
+    """Main entry point for the application."""
+    import sys
+    
     full_language_result_list = get_test_results_from_website()
-    full_language_result_list.extend(get_local_extended_results())
 
     frame_secs = convert_into_pandas_dataframe(full_language_result_list, "secs")
     frame_mem = convert_into_pandas_dataframe(full_language_result_list, "mem")
@@ -225,4 +194,17 @@ if __name__ == '__main__':
         raw_data=output, 
         render_date=datetime.date.today().strftime('%Y-%m-%d')
     )
-    webkit_render_images()
+    
+    # Only run webkit rendering if not explicitly skipped
+    if len(sys.argv) > 1 and sys.argv[1] == "--skip-render":
+        print("Skipping webkit rendering (use --skip-render to avoid this)")
+    else:
+        try:
+            webkit_render_images()
+        except Exception as e:
+            print(f"Webkit rendering failed: {e}")
+            print("This is likely due to missing Chrome driver. Install Chrome and chromedriver to fix this.")
+            print("Data processing completed successfully. Only image rendering failed.")
+
+if __name__ == '__main__':
+    main()

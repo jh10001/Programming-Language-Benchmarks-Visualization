@@ -7,47 +7,7 @@
 Benchmarks data & source codes come from 
 [the computer language benchmarks game](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html).
 
-This project relies on github actions and will be updated weekly with the latest data and render them into visualizations. In addition to images, you can also visit [https://goodmanwen.github.io/Programming-Language-Benchmarks-Visualization/](https://goodmanwen.github.io/Programming-Language-Benchmarks-Visualization/) for live demo.
-
-This project relies to some extent on manual adjustments, so if you find that some items are inconsistent with the original ones, feel free to submit an issue.
-
-## Installation and Usage
-
-This project uses [uv](https://docs.astral.sh/uv/) for package management. To get started:
-
-1. Install uv if you haven't already:
-   ```bash
-   # On Windows
-   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-   
-   # On macOS and Linux
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   ```
-
-2. Clone the repository and install dependencies:
-   ```bash
-   git clone https://github.com/jh10001/Programming-Language-Benchmarks-Visualization.git
-   cd Programming-Language-Benchmarks-Visualization
-   uv sync
-   ```
-
-3. Run the visualization script:
-   ```bash
-   # Full run (requires Chrome and chromedriver)
-   uv run python update_and_render.py
-   
-   # Skip image rendering (only process data)
-   uv run python update_and_render.py --skip-render
-   ```
-
-   Or use the installed command:
-   ```bash
-   uv run update-and-render
-   ```
-
-### Requirements
-- Chrome browser and chromedriver are required for image rendering
-- If you only need the data processing (JavaScript files), you can use `--skip-render` flag
+This project relies on github actions and will be updated weekly with the latest data and render them into visualizations. In addition to images, you can also visit [https://jh10001.github.io/Programming-Language-Benchmarks-Visualization/](https://jh10001.github.io/Programming-Language-Benchmarks-Visualization/) for live demo.
 
 ## Additional technical details
 

@@ -26,6 +26,8 @@ jobs:
       run: uv python install
     - name: Install dependencies
       run: |
+        sudo apt update
+        sudo apt install libxml2-dev libxslt1-dev -y
         uv sync
     - name: Render
       run: |

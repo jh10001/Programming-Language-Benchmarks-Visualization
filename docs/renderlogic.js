@@ -1,5 +1,5 @@
 const raw_data = JSON.parse('[["gcc", 1.0, 1.0], ["clang", 1.08, 2.0], ["icx", 1.12, 3.0], ["rust", 1.15, 4.0], ["gpp", 1.23, 5.0], ["csharpcore", 1.96, 7.0], ["csharpaot", 2.0, 6.0], ["chapel", 2.11, 8.0], ["javavm", 2.61, 11.0], ["ifx", 2.67, 9.0], ["ifc", 2.98, 10.0], ["julia", 3.01, 16.0], ["ghc", 3.12, 13.0], ["go", 3.71, 12.0], ["gnat", 3.88, 15.0], ["graalvmaot", 4.08, 17.0], ["fpascal", 5.04, 14.0], ["ocaml", 5.24, 18.0], ["dartjit", 5.69, 21.0], ["dartexe", 6.34, 20.0], ["node", 6.5, 22.0], ["swift", 6.52, 19.0], ["sbcl", 7.0, 27.0], ["racket", 11.26, 26.0], ["fsharpcore", 12.15, 24.0], ["mri", 20.59, 23.0], ["php", 28.07, 25.0], ["java", 40.3, 30.0], ["ruby", 46.81, 29.0], ["python3", 62.98, 33.0], ["lua", 74.3, 28.0], ["perl", 84.34, 31.0], ["javaxint", 96.65, 32.0], ["pharo", 144.52, 35.0], ["erlang", 551.68, 34.0], ["toit", 681.99, 36.0], ["vw", 812.1, 37.0], ["micropython", 1910.42, 38.0]]')
-const render_date = '2025-10-29'
+const render_date = '2025-11-05'
 const container = document.getElementById('main')
 container.style.width="1080px"
 container.style.height= raw_data.length * 48 + "px"
